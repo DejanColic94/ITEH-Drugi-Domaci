@@ -5,12 +5,11 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
-use Validator;
-use App\Http\Controllers\API\BaseController;
+use Dotenv\Validator;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class RegisterController extends Controller
+class RegisterController extends BaseController
 {
     public function register(Request $request) {
         $validator = Validator::make($request->all, [
