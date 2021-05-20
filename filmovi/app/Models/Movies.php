@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+
 
 class Movies extends Model
 {
@@ -12,4 +14,8 @@ class Movies extends Model
     protected $fillable = [
         'name', 'detail'
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

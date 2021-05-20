@@ -18,6 +18,7 @@ class CreateMoviesTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->text('detail');
+            $table->integer('user_id')->unsigned()->index(); 
         });
     }
 
