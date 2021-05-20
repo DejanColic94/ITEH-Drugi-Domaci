@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\MovieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/dashboard', [MovieController::class, 'index'])->name('dashboard');
+
+    Route::get('/movie', [MovieController::class, 'add']);
+    Route::post('/movie', [MovieController::class, 'store']);
+
+    Route::get('/movie/{movie}', [MovieController::class, 'edit']);
+    Route::post('/movie/{movie}', [MovieController::class, 'update']); 
+});
